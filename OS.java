@@ -51,7 +51,7 @@ public class OS {
                     {
                         System.out.println("Data card detected");
                         execute();
-                        flag=2;
+                        // flag=2;
                         continue;
                     }
                     else if(buffer[0]=='$'&& buffer[1]=='E'&&buffer[2]=='N'&& buffer[3]=='D')
@@ -100,10 +100,10 @@ public class OS {
              IC++;
              if(IR[0]=='L' && IR[1]=='R')
              {
-                 String line = new String(IR);
+                String line = new String(IR);
                  //System.out.println(line);
                  //System.out.println(line.substring(2));
-                 int num=Integer.parseInt(line.substring(2));
+                int num=Integer.parseInt(line.substring(2));
                 R[0]=memory[num][0];
                 R[1]=memory[num][1];
                 R[2]=memory[num][2];
@@ -229,7 +229,7 @@ public class OS {
         IC=0;
     }
     public void print_memory(){
-        for(int i=0;i<=memory_used;i++) {
+        for(int i=0;i<100;i++) {
             System.out.println("memory["+i+"] "+new String(memory[i]));
         }
         System.out.println();
