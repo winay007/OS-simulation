@@ -20,7 +20,6 @@ public class OS {
     private  FileReader input;
     private BufferedReader fread;
     private  FileWriter output;
-    // private BufferedWriter fwrite;
 
     public OS(String file,String output){
         // this.input_file=file;
