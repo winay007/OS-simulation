@@ -23,6 +23,7 @@ public class OS {
     private static int SI = 0;
     private static int PI = 0;
     private static int TI = 0;
+    private static int iSBT = 0;
 
     // interupt counters
     private static int TTC = 0;
@@ -57,9 +58,9 @@ public class OS {
 
     private void dispMemo() {
         for (int i = 0; i < 300; i++) {
-                System.out.println("memory[" + i + "] " + new String(M[i]));
-            }
-            System.out.print("\n");
+            System.out.println("memory[" + i + "] " + new String(M[i]));
+        }
+        System.out.print("\n");
     }
 
     public void allocate() {
@@ -223,6 +224,7 @@ public class OS {
             // no = no * 10; // 120
             no = sRA;
             int k = 0;
+
             while (true) {
                 for (int i = 0; i < 4; i++) {
                     if (M[no][i] == '\0') {
@@ -236,9 +238,9 @@ public class OS {
                     break;
                 }
                 no++;
+
             }
             System.out.println(buffer);
-            // fwrite.write(buffer);
             // fwrite.newLine();
         } catch (Exception e) {
             e.printStackTrace();
@@ -385,6 +387,11 @@ public class OS {
                     PI = 1;
                     MOS();
                 } else {
+                    System.out.println("bauidaudbakdbuakdbakdbakdbkdkb");
+                    System.out.println(String.valueOf(M[sRA][0]) + String.valueOf(M[sRA][1]) + String.valueOf(M[sRA][2])
+                            + String.valueOf(M[sRA][3]) + "  "
+                            + String.valueOf(R[0]) + String.valueOf(R[1]) + String.valueOf(R[2])
+                            + String.valueOf(R[3]));
                     TTC++;
                     if (TTC <= pcb.ttl) {
                         int res = 1;
@@ -408,8 +415,11 @@ public class OS {
                 } else {
                     TTC++;
                     if (TTC <= pcb.ttl) {
+                        iSBT = 1;
                         if (C == 1)
                             IC = Integer.parseInt(String.valueOf(IR[2]) + String.valueOf(IR[3]));
+                        System.out.println("Inside BTTTTTTTT.....");
+                        System.out.println(IC);
                         C = 0;
                     } else {
                         TI = 2;
@@ -438,10 +448,11 @@ public class OS {
             a[2] = '\0';
 
             no = Integer.parseInt(String.valueOf(a).trim()); // 4
-            for (int j = 0; j < 10; j++) {
+            for (IC = 0; IC < 10;) {
                 for (int k = 0; k < 4; k++) {
-                    IR[k] = M[no * 10 + j][k];
+                    IR[k] = M[no * 10 + IC][k];
                 } // IR = GD30
+                IC++;
                 if (Character.isDigit(IR[2]) && Character.isDigit(IR[3])) {
                     if (IR[0] != '\0') {
                         System.out.println("IR: " + String.valueOf(IR).trim());
@@ -482,23 +493,23 @@ public class OS {
     public void initialize() {
         endProgram = false;
         int i, j;
-        //page address
+        // page address
         PTR = Math.abs((rd.nextInt() % 29) * 10); // 50
         for (i = 0; i < 30; i++) {
             flag[i] = 0;
         }
         System.out.println("PTR: " + PTR); // 50
-        //mark PTR block as occupied
+        // mark PTR block as occupied
         flag[PTR / 10] = 1; // flag[5] = 1
 
-        //set all memory  as default
+        // set all memory as default
         for (i = 0; i < 300; i++) {
             for (j = 0; j < 4; j++) {
                 M[i][j] = '\0';
             }
         }
 
-        //Page table register
+        // Page table register
         for (i = PTR; i < PTR + 10; i++) {
             for (j = 0; j < 4; j++) {
                 M[i][j] = '*';

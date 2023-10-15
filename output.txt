@@ -16,11 +16,11 @@ SI: 2 PI: 0 TI: 2 TTC: 11 LLC: 2
 6: Invalid Page fault. Program terminated abnormally.
 SI: 0 PI: 3 TI: 0 TTC: 2 LLC: 0
 
-ABCD
+ABC
 ABCD
 DO NOT
-MATCH
-SI: 3 PI: 0 TI: 0 TTC: 15 LLC: 4
+3: Time limit exceeded. Program terminated abnormally.
+SI: 2 PI: 0 TI: 2 TTC: 15 LLC: 4
 
 5: Oprand Error. Program terminated abnormally.
 SI: 0 PI: 2 TI: 0 TTC: 5 LLC: 0
