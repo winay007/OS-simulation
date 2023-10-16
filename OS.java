@@ -224,13 +224,12 @@ public class OS {
             // no = no * 10; // 120
             no = sRA;
             int k = 0;
-
             while (true) {
                 for (int i = 0; i < 4; i++) {
                     if (M[no][i] == '\0') {
                         break;
                     }
-                    // buffer[k] = M[no][i];
+                    System.out.print(M[no][i]);
                     fwrite.write(M[no][i]);
                     k++;
                 }
@@ -240,7 +239,7 @@ public class OS {
                 no++;
 
             }
-            System.out.println(buffer);
+            System.out.print("\n");
             // fwrite.newLine();
         } catch (Exception e) {
             e.printStackTrace();
@@ -293,7 +292,7 @@ public class OS {
                     PI = 1;
                     MOS();
                 } else {
-                    TTC = TTC + 2;
+                    TTC++;
                     if (TTC <= pcb.ttl) { // ttc = 2
                         SI = 1;
                         MOS();
@@ -314,9 +313,9 @@ public class OS {
                 } else {
                     System.out.println(pcb.tll);
                     System.out.println(LLC);
-                    LLC = LLC + 1; // 1
+                    LLC++;// 1
                     System.out.println(LLC);
-                    TTC = TTC + 1; // 3
+                    TTC++; // 3
                     if (LLC > pcb.tll) {
                         System.out.println("Inside LLC < tll");
                         TI = 1;
@@ -387,7 +386,7 @@ public class OS {
                     PI = 1;
                     MOS();
                 } else {
-                    System.out.println("bauidaudbakdbuakdbakdbakdbkdkb");
+                    // System.out.println("bauidaudbakdbuakdbakdbakdbkdkb");
                     System.out.println(String.valueOf(M[sRA][0]) + String.valueOf(M[sRA][1]) + String.valueOf(M[sRA][2])
                             + String.valueOf(M[sRA][3]) + "  "
                             + String.valueOf(R[0]) + String.valueOf(R[1]) + String.valueOf(R[2])
@@ -418,7 +417,7 @@ public class OS {
                         iSBT = 1;
                         if (C == 1)
                             IC = Integer.parseInt(String.valueOf(IR[2]) + String.valueOf(IR[3]));
-                        System.out.println("Inside BTTTTTTTT.....");
+                        // System.out.println("Inside BTTTTTTTT.....");
                         System.out.println(IC);
                         C = 0;
                     } else {
@@ -449,6 +448,8 @@ public class OS {
 
             no = Integer.parseInt(String.valueOf(a).trim()); // 4
             for (IC = 0; IC < 10;) {
+                // System.out.print("aifnaofnaofnaofnaof");
+                // System.out.println(IC);
                 for (int k = 0; k < 4; k++) {
                     IR[k] = M[no * 10 + IC][k];
                 } // IR = GD30
@@ -482,6 +483,7 @@ public class OS {
             if (endProgram) {
                 break;
             }
+
         }
     }
 
@@ -532,7 +534,8 @@ public class OS {
                     pcb.jobid = line.substring(4, 8); // 0202
                     pcb.ttl = Integer.parseInt(line.substring(8, 12)); // 0017
                     pcb.tll = Integer.parseInt(line.substring(12, 16)); // 0005
-
+                    System.out.println(pcb.ttl);
+                    System.out.println(pcb.tll);
                     initialize();
                     allocate();
                 } else if (line.contains("$DTA")) {
